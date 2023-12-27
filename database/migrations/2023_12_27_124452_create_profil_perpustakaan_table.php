@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('alamat');
-            $table->json('others_identity');
+            $table->json('others_identity')->nullable(true);
             $table->timestamps();
         });
     }

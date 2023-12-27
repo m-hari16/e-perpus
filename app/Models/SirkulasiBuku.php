@@ -18,7 +18,8 @@ class SirkulasiBuku extends Model
         'anggota_id',
         'plan_pengembalian',
         'actual_pengembalian',
-        'isReturn'
+        'isReturn',
+        'kode_sirkulasi_buku',
     ];
 
     public function hasBuku(): BelongsTo

@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('sirkulasi_buku', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_sirkulasi');
             $table->foreignId('buku_id')->constrained('buku');
             $table->foreignId('anggota_id')->constrained('profil_anggota');
             $table->date('plan_pengembalian');
-            $table->date('actual_pengembalian');
+            $table->date('actual_pengembalian')->nullable(true);
             $table->boolean('isReturn')->default(false);
             $table->timestamps();
         });
