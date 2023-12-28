@@ -15,9 +15,9 @@ class PerpustakaanService
     {
         $perpus = new ProfilPerpustakaan();
 
-        $perpus->nama = $dataperpus->nama;
-        $perpus->alamat = $dataperpus->alamat;
-        $perpus->others_identity = json_encode($dataperpus->others_identity);
+        $perpus->nama = $dataperpus['nama'];
+        $perpus->alamat = $dataperpus['alamat'];
+        isset($dataperpus['others_identity']) ?  $perpus->others_identity = json_encode($dataperpus->others_identity) : '';        
         $perpus->save();
 
         return $perpus;
@@ -33,9 +33,9 @@ class PerpustakaanService
     {
         $perpus = ProfilPerpustakaan::findOrFail($id);
 
-        $perpus->nama = $newData->nama;
-        $perpus->alamat = $newData->alamat;
-        $perpus->others_identity = json_encode($newData->others_identity);
+        $perpus->nama = $newData['nama'];
+        $perpus->alamat = $newData['alamat'];
+        isset($newData['others_identity']) ?  $perpus->others_identity = json_encode($newData['others_identity']) : '';        
         $perpus->save();
 
         return $perpus;

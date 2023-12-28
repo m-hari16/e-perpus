@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->json('others_identity')->nullable(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
