@@ -16,17 +16,18 @@ class PetugasService
     public function save($datapetugas)
     {
         $user = new User();
-        $user->name = $datapetugas->name;
-        $user->email = $datapetugas->email;
-        $user->password = Hash::make($datapetugas->password);
+        $user->name = $datapetugas['nama'];
+        $user->email = $datapetugas['email'];
+        $user->password = Hash::make($datapetugas['password']);
         $user->save();
 
         $petugas = new ProfilPetugas();
-        $petugas->nama = $datapetugas->nama;
-        $petugas->tanggal_lahir = $datapetugas->tanggal_lahir;
-        $petugas->jenis_kelamin = $datapetugas->jenis_kelamin;
-        $petugas->alamat = $datapetugas->alamat;
+        $petugas->nama = $datapetugas['nama'];
+        $petugas->tanggal_lahir = $datapetugas['tanggal_lahir'];
+        $petugas->jenis_kelamin = $datapetugas['jenis_kelamin'];
+        $petugas->alamat = $datapetugas['alamat'];
         $petugas->user_id = $user->id;
+        $petugas->save();
 
         return $petugas;
     }
@@ -41,11 +42,10 @@ class PetugasService
     {
         $petugas = ProfilPetugas::findOrFail($id);
 
-        $petugas->nama = $newData->nama;
-        $petugas->tanggal_lahir = $newData->tanggal_lahir;
-        $petugas->jenis_kelamin = $newData->jenis_kelamin;
-        $petugas->alamat = $newData->alamat;
-        $petugas->profesi = $newData->profesi;
+        $petugas->nama = $newData['nama'];
+        $petugas->tanggal_lahir = $newData['tanggal_lahir'];
+        $petugas->jenis_kelamin = $newData['jenis_kelamin'];
+        $petugas->alamat = $newData['alamat'];
         $petugas->save();
 
         return $petugas;
