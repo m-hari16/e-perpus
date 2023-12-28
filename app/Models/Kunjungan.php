@@ -19,6 +19,6 @@ class Kunjungan extends Model
 
     public function belongsToAnggota(): BelongsTo
     {
-        return $this->belongsTo('profil_anggota', 'anggota_id');
+        return $this->belongsTo(ProfilAnggota::class, 'anggota_id');
     }
 }
