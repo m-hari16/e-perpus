@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Models\ProfilAnggota;
+use Illuminate\Support\Str;
 
 class AnggotaService
 {
@@ -13,8 +14,15 @@ class AnggotaService
 
     public function save($dataAnggota)
     {
-        $anggota = ProfilAnggota::create($dataAnggota);
-
+        $anggota = new ProfilAnggota;
+        $anggota->nomor_anggota = Str::random(7);
+        $anggota->nama = $dataAnggota["nama"];
+        $anggota->tanggal_lahir = $dataAnggota["tanggal_lahir"];
+        $anggota->jenis_kelamin = $dataAnggota["jenis_kelamin"];
+        $anggota->alamat = $dataAnggota["alamat"];
+        $anggota->profesi = $dataAnggota["profesi"];
+        $anggota->save();
+        
         return $anggota;
     }
 
@@ -28,11 +36,11 @@ class AnggotaService
     {
         $anggota = ProfilAnggota::findOrFail($id);
 
-        $anggota->nama = $newData->nama;
-        $anggota->tanggal_lahir = $newData->tanggal_lahir;
-        $anggota->jenis_kelamin = $newData->jenis_kelamin;
-        $anggota->alamat = $newData->alamat;
-        $anggota->profesi = $newData->profesi;
+        $anggota->nama = $newData['nama'];
+        $anggota->tanggal_lahir = $newData['tanggal_lahir'];
+        $anggota->jenis_kelamin = $newData['jenis_kelamin'];
+        $anggota->alamat = $newData['alamat'];
+        $anggota->profesi = $newData['profesi'];
         $anggota->save();
 
         return $anggota;
