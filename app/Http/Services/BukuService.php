@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Models\Buku;
+use App\Models\ProfilPerpustakaan;
 use Illuminate\Support\Str;
 
 class BukuService
@@ -24,17 +25,19 @@ class BukuService
 
     public function save($databuku)
     {
+        $perpus = ProfilPerpustakaan::first();
+
         $buku = new Buku();
 
         $buku->kode_buku = Str::random(8);
-        $buku->judul = $databuku->judul;
-        $buku->pengarang = $databuku->pengarang;
-        $buku->penerbit = $databuku->penerbit;
-        $buku->isbn = $databuku->isbn;
+        $buku->judul = $databuku['judul'];
+        $buku->pengarang = $databuku['pengarang'];
+        $buku->penerbit = $databuku['penerbit'];
+        $buku->isbn = $databuku['isbn'];
         $buku->isAvailable = true;
-        $buku->kategori_id = $databuku->kategori_id;
-        $buku->perpustakaan_id = $databuku->perpustakaan_id;
-        $databuku->save();
+        $buku->kategori_id = $databuku['kategori_id'];
+        $buku->perpustakaan_id = $perpus->id;
+        $buku->save();
 
         return $buku;
     }
