@@ -28,7 +28,7 @@ class KategoriBukuService
     {
         $kategori_buku = KategoriBuku::findOrFail($id);
 
-        $kategori_buku->nama_kategori = $newData->nama_kategori;
+        $kategori_buku->nama_kategori = $newData;
         $kategori_buku->save();
 
         return $kategori_buku;
