@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('page.home');
 });
 
-Route::get('login-petugas', 'Web\AuthController@index');
+Route::get('login-petugas', 'Web\AuthController@index')->name('login_petugas');
 Route::post('login', 'Web\AuthController@login');
 
 Route::prefix('admin')->middleware('auth')->group(function() {
