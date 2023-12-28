@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('actual_pengembalian')->nullable(true);
             $table->boolean('isReturn')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
