@@ -10,7 +10,7 @@ class PengembalianService
 {
     public function list($search = null)
     {
-        $pengembalian = new SirkulasiBuku();
+        $pengembalian = SirkulasiBuku::where('isReturn', true)->whereDate('actual_pengembalian', Carbon::today());
 
         if($search) {
             $pengembalian = $pengembalian->where('kode_sirkulasi_buku', $search);
@@ -23,7 +23,7 @@ class PengembalianService
 
     public function save($kodeSirkulasi)
     {
-        $pengembalian = SirkulasiBuku::findOrFail($kodeSirkulasi);
+        $pengembalian = SirkulasiBuku::where('kode_sirkulasi', $kodeSirkulasi['kode_sirkulasi'])->first();
         $pengembalian->isReturn = true;
         $pengembalian->actual_pengembalian = Carbon::now()->format('Y-m-d');
         $pengembalian->save();

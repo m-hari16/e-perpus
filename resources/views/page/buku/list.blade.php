@@ -26,6 +26,7 @@
               <tr>
                 <th>No</th>
                 <th>Kode Buku</th>
+                <th>Judul</th>
                 <th>Pengarang</th>
                 <th>Penerbit</th>
                 <th>ISBN</th>
