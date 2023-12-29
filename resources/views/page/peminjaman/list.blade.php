@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'e-perpus | Petugas')
+@section('title', 'e-perpus | Peminjaman Buku')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Petugas</h1>
+    <h1 class="m-0 text-dark">Peminjaman Buku</h1>
 @stop
 
 @section('content')

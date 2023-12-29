@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('page.home');
+    return view('page.home.index');
 });
 
 Route::get('login-petugas', 'Web\AuthController@index')->name('login_petugas');
