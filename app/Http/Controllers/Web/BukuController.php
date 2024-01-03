@@ -23,6 +23,14 @@ class BukuController extends Controller
         return view('page.buku.list', ['data' => $data]);
     }
 
+    public function listForMember(Request $req)
+    {
+        $svc = new BukuService();
+        $data = $svc->list($req->q);
+
+        return view('page.home.index', ['data' => $data, 'search' => $req->q]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

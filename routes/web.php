@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('page.home.index');
-});
+Route::get('/', 'Web\BukuController@listForMember')->name('home');
 
 Route::get('login-petugas', 'Web\AuthController@index')->name('login_petugas');
 Route::post('login', 'Web\AuthController@login');
